@@ -9,7 +9,7 @@
     <header>
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img src="../IMG/hello_kitty.webp" width="30" height="30" class="d-inline-block align-top" alt="imagem da hello kitty">
+                <img src="../static/IMG/hello_kitty.webp" width="30" height="30" class="d-inline-block align-top" alt="imagem da hello kitty">
             </a>
         </nav>
         <nav>
@@ -27,20 +27,22 @@
                         
                     
             <div class="notepad-body">
+                <button class="seta esquerda">&#10094;</button>
                 <textarea class="note" placeholder="Escreva suas anotações aqui..">
                 </textarea>
+                <button class="seta direita">&#10095</button>
                     <div id="notepad-container">
                         <div class="buttons">
                             <div id="buttons-left">
                                 <form action="button" class="button">
-                                    <button type="button">Nova Nota</button>
+                                    <button type="button" id="new-note">Nova Nota</button>
                                 </form>                                    
                             </div>
                         </div>
                     </div>
 
                     <div id="buttons-right">
-                        <button id="new note">Salvar Nota</button>
+                        <button id="save-note">Salvar Nota</button>
                         <button id="delete=note">Apagar Nota</button>
                     </div>
             </div>
