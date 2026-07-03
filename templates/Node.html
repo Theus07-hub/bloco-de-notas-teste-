@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GBY</title>
+    <link rel="stylesheet" href="../static/CSS/Node.css">
     <script src="{{ url_for('static', filename='JS/botoes.js') }}" defer></script>
 </head>
 <body>
@@ -17,33 +18,38 @@
         
         </nav>
     </header>
-         <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light">
             <form action="#" method="post">
                 <input type="text" placeholder="Busque suas anotações...">
                 <button type="submit">Buscar</button>
             </form>
         </nav>
 
-            <h1 class="title-notepad">Notas GBY</h1>
+        <h1 class="title-notepad">Notas GBY</h1>
                         
                     
-            <div class="notepad-body">
+        <div class="notepad-body">
+            <div class="note-controls">
                 <button class="seta esquerda" id="prev-note">&#10094;</button>
-                <input id="valInput" class="note" placeholder="Escreva suas anotações aqui..">
                 <button class="seta direita" id="next-note">&#10095;</button>
-                    <div id="notepad-container">
-                        <div class="buttons">
-                            <div id="buttons-left">
-                                <button id="new-note">Nova Nota</button>                             
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="buttons-right">
-                        <button id="save-note">Salvar Nota</button>
-                        <button id="delete-note">Apagar Nota</button>
-                    </div>
             </div>
+        </div>
+
+        <textarea id="valInput" class="note" placeholder="Escreva suas anotações aqui.."></textarea>
+
+        <div id="notepad-container">
+            <div class="buttons">
+                <div id="buttons-left">
+                    <button id="new-note">Nova Nota</button>                             
+                </div>
+            </div>
+        </div>
+
+        <div id="buttons-right">
+            <button id="save-note">Salvar Nota</button>
+                <button id="delete-note">Apagar Nota</button>
+            </div>
+        </div>
             
 </body>
 </html>

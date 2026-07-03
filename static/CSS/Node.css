@@ -1,13 +1,76 @@
-body{
-    font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto;
-    background-color: rgb(255, 192, 203) ; 
-}
-textarea{width: 100%; height: 600px; font-size: 16px}
-
-input{width: 100%; height: 300px; font: 20px;}
-input::placeholder {
-    text-align: center;
+body {
+    margin: 0; /* remove a margem padrão do navegador. */
+    padding: 0;/* remove o espaçamento interno padrão. */
+    font-family: Arial, Playfair Display;/* define a fonte do texto. */
+    background-color: #FDA8BF;/* define a cor de fundo da página */
+    color: #333;/* define a cor do texto. */
+    line-height: 1.6;/* deixa o texto mais legível. */
 }
 
-button{ margin-top: 10px; padding: 10px 20px; }
+header{
+    width: 100%; /* faz ele ocupar toda a largura. */
+}
 
+nav {
+    display: flex;/* Organiza os itens em linha. */ 
+    align-items: center;/* alinha os itens verticalmente. */ 
+    justify-content: space-evenly;/* Deixa os espaçamentos dos itens identicos. */ 
+    padding: 5px 10px;/* cria espaço interno */ 
+}
+
+.title-notepad /* classe do h1 */ {
+    text-align: center;/* Centralizar o  Titulo */ 
+    margin:20px 0;/* dá espaço em cima e embaixo */ 
+    font-size: 32px;/* aumenta o Titulo */ 
+    color:#333/* define a cor */ 
+}
+
+
+.notepad-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* alinha tudo no centro vertical */
+    gap: 20px;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.note-controls{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+#notepad-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#buttons-right {
+    display: flex;
+    gap:10px;
+    justify-self: center;
+    flex-wrap: wrap;
+}
+
+.note {
+    width: 100%;
+    max-width: 700px;
+    min-width: 200px;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px
+    resize: vertical;
+}
