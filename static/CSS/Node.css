@@ -27,50 +27,48 @@ nav {
 
 
 .notepad-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* alinha tudo no centro vertical */
-    gap: 20px;
-    margin: 30px auto;
-    padding: 20px;
-    max-width: 400px;
+    display: flex; /* Ativa o modelo Flexbox para alinhar os elementos filhos. */
+    flex-direction: column;  /* Organiza os elementos filhos em formato de coluna (um embaixo do outro). */
+    align-items: center; /* Alinha os elementos filhos horizontalmente no centro da coluna. */
+    gap: 20px;   /* Cria um espaçamento de 20px entre cada elemento filho. */
+    margin: 30px auto;  /* Aplica 30px de margem acima/abaixo e centraliza o bloco na tela lateralmente. */
+    padding: 20px; /* Cria um espaço interno de 20px entre o conteúdo e as bordas. */
+    max-width: 400px; /* Define que o bloco pode encolher, mas não passará de 400px de largura. */
 }
 
-.note-controls{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+.note-controls {
+    display: flex; /* Ativa o modelo Flexbox para alinhar os controles. */
+    gap: 10px; /* Cria um espaçamento de 10px entre os botões/controles. */
+    justify-content: center; /* Centraliza todos os controles horizontalmente dentro do bloco. */
 }
-
 
 #notepad-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: 100%; /* Define que o container ocupará toda a largura disponível (100%). */
+    display: flex;/* Ativa o modelo Flexbox. */
+    justify-content: center; /* Centraliza o conteúdo interno horizontalmente. */
 }
-
 
 .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    width: 100%;/* Define que a barra de botões ocupará toda a largura do elemento pai. */
+    display: flex;/* Ativa o modelo Flexbox. */
+    justify-content: space-between; /* Distribui os botões criando um espaço igual entre eles (empurra para as extremidades). */
 }
 
-
 #buttons-right {
-    display: flex;
-    gap:10px;
-    justify-self: center;
-    flex-wrap: wrap;
+    display: flex;/* Ativa o modelo Flexbox para o grupo de botões da direita. */
+    gap: 10px;/* Cria um espaçamento de 10px entre os botões deste grupo. */
+    justify-self: center;/* Alinha o próprio grupo no centro do espaço atribuído a ele no grid/layout. */
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha caso não caibam na tela. */
 }
 
 .note {
-    width: 100%;
-    max-width: 700px;
-    min-width: 200px;
-    padding: 15px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px
-    resize: vertical;
+    width: 50% /* O elemento vai ocupar toda a largura disponível do container pai. */;
+    max-width: 500px; /* Define um limite máx para a largura do elemento. Não podendo ultrapassar o limite citado.*/
+    min-width: 200px;/* define um limite mínimo para a largura do elemento. Ele impede que o elemento encolha além do valor estipulado. */
+    padding: 20px;/* Serve como Respiro para o conteúdo, fazendo com que os textos/imagens ou arquivos, não fiquem colados na borda.*/
+    border: 2px solid #850dd4;/* (shorthand) que define: espessura, o estilo e a cor da borda de um elemento. */
+    border-radius: 10px; /* define o arredondamento dos cantos da borda de um elemento. */
+    font-size: 16px;/* define o tamanho da fonte (do texto) que está dentro do elemento. */
+    resize: both; /* Permite esticar tanto na largura quanto na altura ao mesmo tempo. */
+    overflow: auto; /* Obrigatório para ativar o resize em elementos comuns. */
 }
