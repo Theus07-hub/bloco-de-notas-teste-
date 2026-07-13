@@ -12,12 +12,6 @@ header{
 }
 
 
-/*Css pego cópiado no MDB*/
-
-/* Icon 1 */
-
-
-/*Fim do Css pego cópiado do MDB*/
 
 nav{
     display: flex;/* Organiza os itens em linha. */ 
@@ -59,21 +53,15 @@ nav{
 .buttons {
     width: 100%;/* Define que a barra de botões ocupará toda a largura do elemento pai. */
     display: flex;/* Ativa o modelo Flexbox. */
-    justify-content: space-between; /* Distribui os botões criando um espaço igual entre eles (empurra para as extremidades). */
+    justify-content: center;/* Alinha o próprio grupo no centro do espaço atribuído a ele no grid/layout. */
 }
 
-#buttons-right {
-    display: flex;/* Ativa o modelo Flexbox para o grupo de botões da direita. */
-    gap: 10px;/* Cria um espaçamento de 10px entre os botões deste grupo. */
-    justify-self: center;/* Alinha o próprio grupo no centro do espaço atribuído a ele no grid/layout. */
-    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha caso não caibam na tela. */
-}
 
 .note {
     margin: 0 auto;
     width: 50%; /* O elemento vai ocupar toda a largura disponível do container pai. */;
-    max-width: 500px; /* Define um limite máx para a largura do elemento. Não podendo ultrapassar o limite citado.*/
-    min-width: 200px;/* define um limite mínimo para a largura do elemento. Ele impede que o elemento encolha além do valor estipulado. */
+    max-width: 521px; /* Define um limite máx para a largura do elemento. Não podendo ultrapassar o limite citado.*/
+    min-width: 243px;/* define um limite mínimo para a largura do elemento. Ele impede que o elemento encolha além do valor estipulado. */
     padding: 20px;/* Serve como Respiro para o conteúdo, fazendo com que os textos/imagens ou arquivos, não fiquem colados na borda.*/
     border: 2px solid #850dd4;/* (shorthand) que define: espessura, o estilo e a cor da borda de um elemento. */
     border-radius: 10px; /* define o arredondamento dos cantos da borda de um elemento. */
