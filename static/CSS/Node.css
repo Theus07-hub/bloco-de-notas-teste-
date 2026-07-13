@@ -1,6 +1,6 @@
 body {
-    margin: 0; /* remove a margem padrão do navegador. */
-    padding: 0;/* remove o espaçamento interno padrão. */
+    margin: 25; /* remove a margem padrão do navegador. */
+    padding: 10;/* remove o espaçamento interno padrão. */
     font-family: Arial, Playfair Display;/* define a fonte do texto. */
     background-color: #FDA8BF;/* define a cor de fundo da página */
     color: #333;/* define a cor do texto. */
@@ -11,14 +11,22 @@ header{
     width: 100%; /* faz ele ocupar toda a largura. */
 }
 
-nav {
+
+/*Css pego cópiado no MDB*/
+
+/* Icon 1 */
+
+
+/*Fim do Css pego cópiado do MDB*/
+
+nav{
     display: flex;/* Organiza os itens em linha. */ 
     align-items: center;/* alinha os itens verticalmente. */ 
     justify-content: space-evenly;/* Deixa os espaçamentos dos itens identicos. */ 
     padding: 5px 10px;/* cria espaço interno */ 
 }
 
-.title-notepad /* classe do h1 */ {
+.title-notepad { /* classe do h1 */
     text-align: center;/* Centralizar o  Titulo */ 
     margin:20px 0;/* dá espaço em cima e embaixo */ 
     font-size: 32px;/* aumenta o Titulo */ 
@@ -62,7 +70,8 @@ nav {
 }
 
 .note {
-    width: 50% /* O elemento vai ocupar toda a largura disponível do container pai. */;
+    margin: 0 auto;
+    width: 50%; /* O elemento vai ocupar toda a largura disponível do container pai. */;
     max-width: 500px; /* Define um limite máx para a largura do elemento. Não podendo ultrapassar o limite citado.*/
     min-width: 200px;/* define um limite mínimo para a largura do elemento. Ele impede que o elemento encolha além do valor estipulado. */
     padding: 20px;/* Serve como Respiro para o conteúdo, fazendo com que os textos/imagens ou arquivos, não fiquem colados na borda.*/
@@ -71,4 +80,6 @@ nav {
     font-size: 16px;/* define o tamanho da fonte (do texto) que está dentro do elemento. */
     resize: both; /* Permite esticar tanto na largura quanto na altura ao mesmo tempo. */
     overflow: auto; /* Obrigatório para ativar o resize em elementos comuns. */
+    justify-content: space-evenly;
+    display:flex;
 }
