@@ -1,0 +1,30 @@
+body {
+
+background-color:  #FDA8BF;
+margin-top: 50px;
+margin-left: 50px;
+margin-right:50px;
+margin: 10px;
+};
+
+
+header {
+align-items: center;
+};
+
+main.container {
+
+display: grid;
+grid-template-columns: 90px 260px 1fr;
+border-right: 0;
+min-height: 100vh;
+};
+
+.barra-lateral{
+    background-color: black;
+    padding: 10px;
+    border-right: 50px;
+};
+
+.menu-paginas{};
+

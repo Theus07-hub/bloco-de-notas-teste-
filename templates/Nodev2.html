@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco de Notas</title>
+    <link rel="stylesheet" href="../static/CSS/Node2.css">
+</head>
+<body>
+    <header>
+          <img src="{{ url_for('static', filename='IMG/hello_kitty.webp') }}" width="30" height="30" class="d-inline-block align-top" alt="imagem da hello kitty">
+    </header>
+    <main class="container">
+
+        <section class="barra-lateral" id="BAR-LAT">
+            <aside class="menu-abas">
+                <button class="addBtn1">+ Adicionar Aba</button>
+            </aside>
+        </section>
+        
+        <section class="menu-páginas" id="M-PAG">
+            <button class="addBtn2">+ Adicionar Página</button>
+        </section>
+            
+        <section class="bloco_notas" id="B-NOTES">
+            <div class="titulo-texto">
+                <textarea id="textInput" placeholder="Digite o título.."></textarea>
+            </div>
+
+            <div class="escrita-texto">
+                <textarea id="titleInput" placeholder="Escreva algo com o coração, pois sentimentos são eternos."></textarea>
+            </div>
+        </section>
+
+        
+    </main>
+</body>
+</html>

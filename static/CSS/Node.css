@@ -26,8 +26,6 @@ nav{
     font-size: 32px;/* aumenta o Titulo */ 
     color:#333/* define a cor */ 
 }
-
-
 .notepad-body {
     display: flex; /* Ativa o modelo Flexbox para alinhar os elementos filhos. */
     flex-direction: column;  /* Organiza os elementos filhos em formato de coluna (um embaixo do outro). */
@@ -59,7 +57,7 @@ nav{
 
 .note {
     margin: 0 auto;
-    width: 50%; /* O elemento vai ocupar toda a largura disponível do container pai. */;
+    width: 50%; /* O elemento vai ocupar toda a largura disponível do container pai. */
     max-width: 521px; /* Define um limite máx para a largura do elemento. Não podendo ultrapassar o limite citado.*/
     min-width: 243px;/* define um limite mínimo para a largura do elemento. Ele impede que o elemento encolha além do valor estipulado. */
     padding: 20px;/* Serve como Respiro para o conteúdo, fazendo com que os textos/imagens ou arquivos, não fiquem colados na borda.*/
@@ -70,4 +68,5 @@ nav{
     overflow: auto; /* Obrigatório para ativar o resize em elementos comuns. */
     justify-content: space-evenly;
     display:flex;
+    
 }

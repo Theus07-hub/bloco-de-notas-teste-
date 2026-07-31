@@ -16,33 +16,43 @@
         </nav>
     </header>
 
-    <a href="#">
-        <span>Blocos Criados</span>
-        <span>Acessar Conta</span>
-    </a>
-    <nav class="navbar navbar-light bg-light">
-        <form action="#" method="post">
-            <input type="text" placeholder="Busque suas anotações...">
-            <button type="submit">Buscar</button>
-        </form>
-    </nav>
+    <main class="container">
 
-    <h1 class="title-notepad">Notas GBY</h1>
+        <aside class="menu">
+            <h2>Projetos Criados</h2>
+
+            <ul>
+                <li>Estudos</li>
+                <li>Anotações Gerais</li>
+                <li>Trabalhos Pessoais</li>
+            </ul>
+        </aside>
+
+        <nav class="navbar navbar-light bg-light">
+            <form action="#" method="post">
+                <input type="text" placeholder="Busque suas anotações...">
+                <button type="submit">Buscar</button>
+            </form>
+        </nav>
+
+        <h1 class="title-notepad">Notas GBY</h1>
                          
-    <div class="notepad-body">
-        <div class="note-controls">
-            <button class="seta esquerda" id="prev-note">&#10094;</button>
-            <button class="seta direita" id="next-note">&#10095;</button>
+        <div class="notepad-body">
+            <div class="note-controls">
+                <button class="seta esquerda" id="prev-note">&#10094;</button>
+                <button class="seta direita" id="next-note">&#10095;</button>
+            </div>
         </div>
-    </div>
 
-    <textarea id="valInput" class="note" placeholder="Escreva suas anotações aqui.."style="height: 162px; width: 537px;"></textarea>
+        <section class="text_area">
+            <textarea id="valInput" class="note" placeholder="Escreva suas anotações aqui.." style="height:162px; width:537px"></textarea>
+        </section>
 
         <div class="buttons">
             <button id="new-note">Nova Nota</button>
             <button id="save-note">Salvar Nota</button>
             <button id="delete-note">Apagar Nota</button>
         </div>
-            
+    </main>
 </body>
 </html>
