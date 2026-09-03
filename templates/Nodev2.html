@@ -13,31 +13,35 @@
     <main class="container">
 
         <section class="barra-lateral">
-            <aside class="menu-abas">
-                <button>+ Adicionar Aba</button>
+            <aside class="menu-abas" id="aba-section">
+
+                <div id="mensagem1">Adicione uma Aba.</div>
+                
+                <button onclick="buttonAba()">Adicionar Aba</button>
+                
+                <div id="inputNota"> 
+                    <input type="text" placeholder="digite o nome para sua aba">
+                    <ul id="ordemUL"></ul>
+                </div>
+
             </aside>
         </section>
         
         <section class="menu-paginas">
-            <button>+ Adicionar Página</button>
-
-            <article>
-                <h3>Anotação 1</h3>
-                <p>Prévia do texto...</p>
-            </article>
-
-            <article>
-                <h3>Anotação 2</h3>
-                <p>Prévia do texto...</p>
-            </article>
+            <div id="mensagem1">Adicione uma Página.</div>
+            <button onclick="buttonPage()">Adicionar Página</button>
         </section>
             
         <section class="bloco_notas" >
-                <textarea id="textInput" placeholder="Digite o título.." style="width: 435px; height: 31px;"></textarea>
-                <textarea id="titleInput" placeholder="Escreva algo com o coração, pois sentimentos são eternos." style="height: 537px; width: 436px;"></textarea>
+                <p id="textP"></p>
+                <textarea id="textTitle" placeholder="Digite o título.." style="width: 435px; height: 31px;"></textarea>
+                <textarea id="textInput" placeholder="Escreva algo com o coração, pois sentimentos são eternos." style="height: 537px; width: 436px;"></textarea>
+                <button onclick="SalvarBT()">Salvar Nota</button>
         </section>
 
         
     </main>
+
+    <script src="../static/JS/botoes.js"></script>
 </body>
 </html>
