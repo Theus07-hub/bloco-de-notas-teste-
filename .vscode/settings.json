@@ -7,13 +7,13 @@
             },
             "ssh": "Disabled",
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "127.0.0.1",
             "port": 3306,
             "driver": "MySQL",
-            "name": "Oliveira",
-            "database": "note",
-            "username": "r00t_c4",
-            "password": "arcade132207"
+            "name": "Notas Local",
+            "database": "notas",
+            "username": "root",
+            "password": ""
         }
     ]
 }
