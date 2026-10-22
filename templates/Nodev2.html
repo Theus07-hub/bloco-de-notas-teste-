@@ -4,45 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bloco de Notas</title>
-    <link rel="stylesheet" href="../static/CSS/Node2.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Node2.css') }}">
 </head>
 <body>
     <header>
-          <img src="{{ url_for('static', filename='IMG/hello_kitty.webp') }}" width="30" height="30" class="d-inline-block align-top" alt="imagem da hello kitty">
-          <p id="textP"></p>
+        <img src="{{ url_for('static', filename='IMG/hello_kitty.webp') }}" width="30" height="30" alt="Imagem da Hello Kitty">
+        <div>
+            <h1>Bloco de Notas</h1>
+            <p id="statusMensagem" aria-live="polite">Carregando notebooks...</p>
+        </div>
     </header>
+
     <main class="container">
-
-        <section class="barra-lateral">
-            <aside class="menu-abas" id="aba-section">
-
-                <div id="mensagem1">Adicione uma Aba.</div>
-                
-                <button onclick="buttonAba()">Adicionar Aba</button>
-                
-                <div id="inputNota"> 
-                    <ul id="ordemUL"></ul>
+        <aside class="barra-lateral">
+            <section class="painel-notebook">
+                <label for="seletorNotebook">Notebook atual</label>
+                <select id="seletorNotebook">
+                    <option>Carregando...</option>
+                </select>
+                <div class="grupo-botoes">
+                    <button id="botaoAdicionarNotebook" type="button">Novo</button>
+                    <button id="botaoRenomearNotebook" type="button">Renomear</button>
+                    <button id="botaoExcluirNotebook" type="button">Excluir</button>
                 </div>
+            </section>
 
-            </aside>
-        </section>
-        
-        <section class="menu-paginas">
-            <div id="mensagem1">Adicione uma Página.</div>
-            <button onclick="buttonPage()">Adicionar Página</button>
-        </section>
-        
-       
+            <section class="menu-abas" aria-labelledby="tituloAbas">
+                <h2 id="tituloAbas">Abas</h2>
+                <div class="grupo-botoes">
+                    <button id="botaoAdicionarAba" type="button">Nova</button>
+                    <button id="botaoRenomearAba" type="button">Renomear</button>
+                    <button id="botaoExcluirAba" type="button">Excluir</button>
+                </div>
+                <p id="mensagemAbas" class="mensagem-vazia">Selecione um notebook.</p>
+                <ul id="listaAbas" class="lista-navegacao"></ul>
+            </section>
+        </aside>
 
-        <section class="bloco_notas" >
-                <textarea id="textTitle" placeholder="Digite o título.." style="width: 435px; height: 31px;"></textarea>
-                <textarea id="textInput" placeholder="Escreva algo com o coração, pois sentimentos são eternos." style="height: 537px; width: 436px;"></textarea>
-                <button onclick="SalvarBT()">Salvar Nota</button>
+        <section class="menu-paginas" aria-labelledby="tituloPaginas">
+            <h2 id="tituloPaginas">Páginas</h2>
+            <div class="grupo-botoes">
+                <button id="botaoAdicionarPagina" type="button">Nova</button>
+                <button id="botaoExcluirPagina" type="button">Excluir</button>
+            </div>
+            <p id="mensagemPaginas" class="mensagem-vazia">Selecione uma aba.</p>
+            <ul id="listaPaginas" class="lista-navegacao"></ul>
         </section>
 
-        
+        <section class="bloco-notas" aria-labelledby="tituloEditor">
+            <h2 id="tituloEditor">Editor</h2>
+            <label for="textTitle">Título da página</label>
+            <textarea id="textTitle" placeholder="Digite o título..." ></textarea>
+
+            <label for="textInput">Conteúdo</label>
+            <textarea id="textInput" placeholder="Escreva algo com o coração, pois sentimentos são eternos." disabled></textarea>
+
+            <button id="botaoSalvarNota" type="button" disabled>Salvar Nota</button>
+        </section>
     </main>
 
-    <script src="../static/JS/botoes.js"></script>
+    <script src="{{ url_for('static', filename='JS/botoes.js') }}"></script>
 </body>
 </html>

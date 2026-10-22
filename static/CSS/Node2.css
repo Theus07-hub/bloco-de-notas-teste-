@@ -1,41 +1,178 @@
+:root {
+    --rosa: #fda8bf;
+    --rosa-escuro: #c45072;
+    --fundo-claro: #fff8fb;
+    --fundo-painel: #f6d6df;
+    --texto: #38232a;
+    --borda: #d79aaa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color:  #FDA8BF;
-    margin: 0px;
-    max-width: 965px;
-    max-height: 620px;
+    background-color: var(--rosa);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+button,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    background-color: var(--rosa-escuro);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 8px 10px;
+}
+
+button:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 header {
-    display: flex;
     align-items: center;
-    height: 50px;
-    padding: 0 16px;
+    display: flex;
+    gap: 10px;
+    min-height: 62px;
+    padding: 10px 16px;
+}
+
+header h1,
+header p,
+h2 {
+    margin: 0;
+}
+
+header h1 {
+    font-size: 1.2rem;
+}
+
+header p {
+    font-size: 0.85rem;
+    margin-top: 3px;
 }
 
 main.container {
-    display: grid; /*Transformar em Grid*/
-    grid-template-columns: 90px 280px 2fr; /* Criar 3 colunas*/
-    min-height: calc(100vh - 50px); /*altura da tela inteira*/
+    display: grid;
+    grid-template-columns: minmax(210px, 0.8fr) minmax(190px, 0.7fr) minmax(360px, 2fr);
+    min-height: calc(100vh - 62px);
 }
 
-.barra-lateral{
-    background-color: grey;
+.barra-lateral,
+.menu-paginas,
+.bloco-notas {
+    padding: 14px;
+}
+
+.barra-lateral {
+    background-color: var(--fundo-painel);
+    border-right: 1px solid var(--borda);
+}
+
+.painel-notebook,
+.menu-abas,
+.menu-paginas,
+.bloco-notas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.painel-notebook {
+    border-bottom: 1px solid var(--borda);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.menu-paginas {
+    background-color: #ffeef3;
+    border-right: 1px solid var(--borda);
+}
+
+.bloco-notas {
+    background-color: var(--fundo-claro);
+}
+
+.bloco-notas textarea {
+    border: 1px solid var(--borda);
+    border-radius: 5px;
     padding: 10px;
-    border-right: 1px solid black;
-    overflow: auto;
+    resize: vertical;
+    width: 100%;
 }
 
-.menu-paginas{
-    background-color:aliceblue;
-    padding: 10px;
-    border-right: 1px; 
-    overflow:auto;
+#textTitle {
+    min-height: 42px;
 }
 
-.bloco-notas{
-    background-color:aliceblue;
-    padding: 10px;
-    min-width: 1027px 620px;
+#textInput {
+    flex: 1;
+    min-height: 360px;
 }
 
+.lista-navegacao {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
+.item-navegacao {
+    background-color: white;
+    border: 1px solid var(--borda);
+    color: var(--texto);
+    text-align: left;
+    width: 100%;
+}
+
+.item-navegacao.ativo {
+    background-color: var(--rosa-escuro);
+    color: white;
+}
+
+.mensagem-vazia {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.grupo-botoes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.grupo-botoes button {
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 6px 4px;
+}
+
+@media (max-width: 850px) {
+    main.container {
+        grid-template-columns: 1fr;
+    }
+
+    .barra-lateral,
+    .menu-paginas {
+        border-bottom: 1px solid var(--borda);
+        border-right: 0;
+    }
+
+    #textInput {
+        min-height: 260px;
+    }
+}

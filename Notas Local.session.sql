@@ -1,1 +1,0 @@
-SELECT notebook from notas;
