@@ -8,7 +8,7 @@ class PageRepository:
     def criar_pagina(self, section_id, titulo_page, conteudo, position=0):
         cursor = self.conexao.cursor()
         try:
-            sql = "INSERT INTO pagina (section_id, titulo_page, conteudo, position) VALUES (%s, %s, %s, %s)"
+            sql = "INSERT INTO pagina (section_id, titulo_page, conteudo, position) VALUES (?, ?, ?, ?)"
             cursor.execute(sql, (section_id, titulo_page, conteudo, position))
             self.conexao.commit()
             return cursor.lastrowid
@@ -16,10 +16,10 @@ class PageRepository:
             cursor.close()
 
     def listar_pagina(self, section_id):
-        cursor = self.conexao.cursor(dictionary=True)
+        cursor = self.conexao.cursor()
         try:
-            cursor.execute("SELECT * FROM pagina WHERE section_id = %s", (section_id,))
-            return cursor.fetchall()
+            cursor.execute("SELECT * FROM pagina WHERE section_id = ?", (section_id,))
+            return [dict(row) for row in cursor.fetchall()]
         finally:
             cursor.close()
 
@@ -30,18 +30,18 @@ class PageRepository:
             valores = []
 
             if titulo_page is not None:
-                campos_atualizar.append("titulo_page = %s")
+                campos_atualizar.append("titulo_page = ?")
                 valores.append(titulo_page)
 
             if conteudo is not None:
-                campos_atualizar.append("conteudo = %s")
+                campos_atualizar.append("conteudo = ?")
                 valores.append(conteudo)
 
             if not campos_atualizar:
                 return
 
             valores.append(id_page)
-            sql = f"UPDATE pagina SET {', '.join(campos_atualizar)} WHERE id_pagina = %s"
+            sql = f"UPDATE pagina SET {', '.join(campos_atualizar)} WHERE id_pagina = ?"
             cursor.execute(sql, tuple(valores))
             self.conexao.commit()
         finally:
@@ -50,7 +50,7 @@ class PageRepository:
     def apagar_pagina(self, id_page):
         cursor = self.conexao.cursor()
         try:
-            cursor.execute("DELETE FROM pagina WHERE id_pagina = %s", (id_page,))
+            cursor.execute("DELETE FROM pagina WHERE id_pagina = ?", (id_page,))
             self.conexao.commit()
         finally:
             cursor.close()
