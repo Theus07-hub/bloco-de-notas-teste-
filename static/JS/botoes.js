@@ -212,11 +212,9 @@ async function carregarSections(idParaSelecionar = null) {
         const sections = await requisicao(`/api/section/${selectedNotebookId}`);
 
         if (sections.length === 0) {
-            const novaSec = await requisicao('/api/section/', {
-                method: 'POST',
-                body: JSON.stringify({ notebook_id: selectedNotebookId, titulo_section: 'Aba Principal' })
-            });
-            await carregarSections(novaSec.id);
+            configurarMensagemVazia(elementos.mensagemAbas, 'Nenhuma aba encontrada. Clique em "Nova" para criar.', true);
+            configurarMensagemVazia(elementos.mensagemPaginas, 'Selecione uma aba.', true);
+            limparEditor();
             return;
         }
 
@@ -267,16 +265,9 @@ async function carregarPaginas(idParaSelecionar = null) {
         paginasCarregadas = await requisicao(`/api/pagina/${selectedSectionId}`);
 
         if (paginasCarregadas.length === 0) {
-            const novaPag = await requisicao('/api/pagina/', {
-                method: 'POST',
-                body: JSON.stringify({
-                    section_id: selectedSectionId,
-                    titulo_page: 'Minha Nota',
-                    conteudo: ''
-                })
-            });
-            paginasCarregadas = await requisicao(`/api/pagina/${selectedSectionId}`);
-            idParaSelecionar = novaPag.id;
+            configurarMensagemVazia(elementos.mensagemPaginas, 'Nenhuma página encontrada. Clique em "Nova" para criar.', true);
+            limparEditor();
+            return;
         }
 
         configurarMensagemVazia(elementos.mensagemPaginas, 'Adicione uma página.', false);
