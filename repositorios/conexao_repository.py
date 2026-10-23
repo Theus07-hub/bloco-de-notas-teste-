@@ -32,6 +32,18 @@ def criar_tabelas():
             position INTEGER DEFAULT 0
         )
     """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS usuarios (
+            id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT,
+            email TEXT UNIQUE,
+            senha TEXT
+        )
+    """)
+    cursor.execute("""
+        INSERT OR REPLACE INTO usuarios (id_usuario, nome, email, senha)
+        VALUES (1, 'Gaby', 'usergbyz@admin.com', '220625')
+    """)
     conexao.commit()
     cursor.close()
 

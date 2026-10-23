@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template
 from repositorios.notebook_repository import NotebookRepository
 from repositorios.section_repository import SectionRepository
 from repositorios.page_repository import PageRepository
+from repositorios.usuario_repository import UsuarioRepository
 
 
 app = Flask(__name__)
@@ -9,6 +10,7 @@ app = Flask(__name__)
 notebook_repo = NotebookRepository()
 section_repo = SectionRepository()
 page_repo = PageRepository()
+usuario_repo = UsuarioRepository()
 
 
 def dados_obrigatorios(*campos, permitir_vazios=()):
@@ -31,6 +33,33 @@ def dados_obrigatorios(*campos, permitir_vazios=()):
         }), 400)
 
     return dados, None
+
+
+# ===================== Login =====================
+
+@app.route('/api/login', methods=['POST'])
+def fazer_login():
+    dados, erro = dados_obrigatorios('email', 'senha')
+    if erro:
+        return erro
+
+    usuario = usuario_repo.validar_login(dados['email'], dados['senha'])
+
+    if usuario:
+        return jsonify({
+            'sucesso': True,
+            'mensagem': 'Login realizado com sucesso!',
+            'usuario': {
+                'id': usuario['id_usuario'],
+                'nome': usuario['nome'],
+                'email': usuario['email']
+            }
+        }), 200
+    else:
+        return jsonify({
+            'sucesso': False,
+            'mensagem': 'E-mail ou senha inválidos.'
+        }), 401
 
 
 # ===================== Notebook =====================
@@ -183,7 +212,12 @@ def apagar_pagina(id_page):
 
 
 @app.route('/')
-def front():
+def login_page():
+    return render_template('login.html')
+
+
+@app.route('/app')
+def notebook_app():
     return render_template('Nodev2.html')
 
 

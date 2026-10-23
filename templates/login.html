@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.css') }}">
+    <title>Área de Login</title>
+</head>
+<body>
+    <!-- Botão que abre o modal -->
+    <button id="openModalBtn" class="open-modal" data-modal="myModal" type="button">Abrir Login</button>
+
+    <!-- Modal de Login -->
+    <dialog id="myModal">
+        <div class="modal-header">
+            <span class="modal-title">Acessar Conta</span>
+            <button id="closeModalBtn" class="close-modal" data-modal="myModal" type="button">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="modalForm">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+                    <small class="error-msg"></small>
+                </div>
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Sua senha" required />
+                    <small class="error-msg"></small>
+                </div>
+                <div class="password-options">
+                    <label class="remember-password">
+                        <input type="checkbox" id="remember"> Lembrar de mim
+                    </label>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" id="login_button">Entrar</button>
+            </form>
+        </div>
+    </dialog>
+
+    <div class="background"></div>
+
+    <script src="{{ url_for('static', filename='JS/login.js') }}"></script>
+</body>
+</html>
