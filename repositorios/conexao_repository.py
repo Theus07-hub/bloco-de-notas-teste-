@@ -1,50 +1,66 @@
-import sqlite3
 import os
+import psycopg2
+from dotenv import load_dotenv
 
-# Define o arquivo do SQLite na raiz do projeto (gby.db)
-db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'gby.db')
+# Carrega as variáveis do arquivo .env
+load_dotenv()
 
-conexao = sqlite3.connect(db_path, check_same_thread=False)
-conexao.row_factory = sqlite3.Row  # Permite retornar resultados como dicionários
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Conecta ao Neon (PostgreSQL) na nuvem
+conexao = psycopg2.connect(DATABASE_URL)
 
 def criar_tabelas():
     cursor = conexao.cursor()
+
+    # 1. Tabela notebook
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS notebook (
-            id_notebook INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_notebook SERIAL PRIMARY KEY,
             user_id INTEGER,
-            nome_notebook TEXT
-        )
+            nome_notebook VARCHAR(150)
+        );
     """)
+
+    # 2. Tabela section
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS section (
-            id_section INTEGER PRIMARY KEY AUTOINCREMENT,
-            notebook_id INTEGER,
-            titulo_section TEXT
-        )
+            id_section SERIAL PRIMARY KEY,
+            notebook_id INTEGER REFERENCES notebook(id_notebook) ON DELETE CASCADE,
+            titulo_section VARCHAR(150)
+        );
     """)
+
+    # 3. Tabela pagina
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS pagina (
-            id_pagina INTEGER PRIMARY KEY AUTOINCREMENT,
-            section_id INTEGER,
-            titulo_page TEXT,
+            id_pagina SERIAL PRIMARY KEY,
+            section_id INTEGER REFERENCES section(id_section) ON DELETE CASCADE,
+            titulo_page VARCHAR(150),
             conteudo TEXT,
             position INTEGER DEFAULT 0
-        )
+        );
     """)
+
+    # 4. Tabela usuarios
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS usuarios (
-            id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT,
-            email TEXT UNIQUE,
-            senha TEXT
-        )
+            id_usuario SERIAL PRIMARY KEY,
+            nome VARCHAR(100),
+            email VARCHAR(100) UNIQUE,
+            senha VARCHAR(255)
+        );
     """)
+
+    # 5. Criar usuário padrão se não existir
     cursor.execute("""
-        INSERT OR REPLACE INTO usuarios (id_usuario, nome, email, senha)
+        INSERT INTO usuarios (id_usuario, nome, email, senha)
         VALUES (1, 'Gaby', 'usergbyz@admin.com', '220625')
+        ON CONFLICT (id_usuario) DO NOTHING;
     """)
+
     conexao.commit()
     cursor.close()
 
+# Executa a criação das tabelas ao importar
 criar_tabelas()

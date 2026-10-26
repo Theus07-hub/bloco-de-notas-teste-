@@ -1,4 +1,5 @@
 from .conexao_repository import conexao
+from psycopg2.extras import RealDictCursor
 
 
 class SectionRepository:
@@ -9,20 +10,19 @@ class SectionRepository:
         """Cria uma nova section dentro de um notebook"""
         cursor = self.conexao.cursor()
         try:
-            sql = "INSERT INTO section (notebook_id, titulo_section) VALUES (?, ?)"
+            sql = "INSERT INTO section (notebook_id, titulo_section) VALUES (%s, %s) RETURNING id_section"
             cursor.execute(sql, (notebook_id, titulo_section))
             self.conexao.commit()
-            return cursor.lastrowid
+            return cursor.fetchone()[0] 
         finally:
             cursor.close()
 
     def listar_section(self, notebook_id):
         """Lista todas as sections de um notebook específico"""
-        cursor = self.conexao.cursor()
+        cursor = self.conexao.cursor(cursor_factory=RealDictCursor)
         try:
-            cursor.execute("SELECT * FROM section WHERE notebook_id = ?", (notebook_id,))
-            resultados = [dict(row) for row in cursor.fetchall()]
-            return resultados
+            cursor.execute("SELECT * FROM section WHERE notebook_id = %s", (notebook_id,))
+            return cursor.fetchall()
         finally:
             cursor.close()
 
@@ -30,7 +30,7 @@ class SectionRepository:
         """Atualiza o título de uma section específica"""
         cursor = self.conexao.cursor()
         try:
-            sql = "UPDATE section SET titulo_section = ? WHERE id_section = ?"
+            sql = "UPDATE section SET titulo_section = %s WHERE id_section = %s"
             cursor.execute(sql, (novo_titulo, id_section))
             self.conexao.commit()
         finally:
@@ -40,7 +40,7 @@ class SectionRepository:
         """Deleta uma section específica"""
         cursor = self.conexao.cursor()
         try:
-            cursor.execute("DELETE FROM section WHERE id_section = ?", (id_section,))
+            cursor.execute("DELETE FROM section WHERE id_section = %s", (id_section,))
             self.conexao.commit()
         finally:
             cursor.close()
